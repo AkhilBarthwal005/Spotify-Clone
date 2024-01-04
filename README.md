@@ -1,7 +1,7 @@
 # Spotify Web Player Clone
 
 ![Spotify Web Player](link-to-your-screenshot-or-image.png)
-![Animated GIF](https://drive.google.com/file/d/1qkgeDg79BQZXaMXpRnDicx81T9rahFyk/view)
+![Animated GIF](https://github.com/AkhilBarthwal005/Spotify-Clone/blob/main/SpotifyClone%20gif%20.gif)
 
 ## Overview
 
