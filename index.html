@@ -5,95 +5,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spotify - Web Player: Music for everyone</title>
+  <!-- Link to external stylesheets -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="utitlity.css" />
 </head>
 
 <body>
+  <!-- Main container for the webpage -->
   <div class="container flex bg-black">
+    <!-- Sidebar section -->
     <div class="sidebar">
+      <!-- Home and Search section in the sidebar -->
       <div class="home bg-grey roundend p-1">
         <div class="logo">
+          <!-- Spotify logo -->
           <img class="invert" src="img/svg/logo.svg" alt="logo" />
         </div>
+        <!-- Navigation links -->
         <ul>
           <li class="f-700">
+             <!-- Home link -->
             <img class="invert" src="img/svg/home.svg" alt="home" />Home
           </li>
           <li class="grey f-700">
+            <!-- Search link -->
             <img class="" src="img/svg/search.svg" alt="search" />Search
           </li>
         </ul>
       </div>
+      <!-- Library section in the sidebar -->
       <div class="libaray bg-grey roundend p-1">
         <div class="heading flex item-center">
+            <!-- Library icon -->
           <img src="img/svg/libaray.svg" alt="" />
           <div class="lib grey f-700">Your Library</div>
         </div>
+        <!-- Songs library -->
         <div class="songs-libaray">
           <ul>
+            <!-- Song list goes here -->
           </ul>
         </div>
+        <!-- Footer in the library section -->
         <footer class="footer">
           <p class="grey">
+             <!-- Copyright information -->
             &copy; 2023 Your Spotify Clone App. All rights reserved.
           </p>
         </footer>
       </div>
     </div>
+    <!-- Background for the hamburger menu -->
     <div id="hamburger-background"></div>
+    <!-- Main content section -->
     <div class="main">
+      <!-- Main content container -->
       <div class="content bg-grey roundend">
+        <!-- Navigation bar at the top -->
         <nav class="nav p-1 flex item-center">
+          <!-- Navigation arrows and buttons -->
           <div class="nav-arrows">
             <img id="hamburger" src="img/svg/hamburger.svg" alt="hamburger">
             <img class="roundend" src="img/svg/left.svg" alt="" />
             <img class="roundend" src="img/svg/right.svg" alt="" />
           </div>
           <div class="buttons f-700">
+            <!-- Sign up and log in buttons -->
             <button class="nav-btn signup grey f-700">Sign up</button>
             <button class="nav-btn login f-700">Log in</button>
           </div>
         </nav>
+        <!-- Spotify Playlist section -->
         <div class="spotify-playlist p-1">
+           <!-- Playlist heading -->
           <div class="playlist-heading">
             <h3>Spotify Playlist</h3>
           </div>
+          <!-- Playlist cards go here -->
           <div class="playlist-cards">
-
-
-
-
 
           </div>
 
-
-
-
+           <!-- Music Player section -->
           <div class="music-player">
+            <!-- Song details and controllers -->
             <div class="above-bar">
               <div class="cureent-song-details">
+                <!-- Current song details go here -->
               </div>
               <div class="controllers">
+                 <!-- Previous, play, and next buttons -->
                 <img id="pervious" src="img/svg/pervious.svg" alt="">
                 <img id="play" src="img/svg/play.svg" alt="">
                 <img id="next"  src="img/svg/next.svg" alt="">
               </div>
+              <!-- Time and volume controls -->
               <div class="time-vol">
                 <div class="timeline">
-
+                  <!-- Timeline for the current song -->
               </div>
               <div class="volume">
+                <!-- Volume icon and range input -->
                 <img src="img/svg/volume.svg" alt="">
                 <input type="range" id="volumeRange" name="volume" id="">
               </div>
               </div>
             </div>
-
+              <!-- Seekbar and circle for progress -->
             <div class="seekbar">
-              
+              <!-- Seekbar goes here -->
             </div>
             <div class="circle">
+               <!-- Circle for progress goes here -->
             </div>
           </div>
         </div>
@@ -102,7 +125,7 @@
   </div>
   </div>
 
-
+ <!-- Script tag to include JavaScript file -->
   <script src="script.js"></script>
 </body>
 

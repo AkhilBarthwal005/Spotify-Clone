@@ -1,12 +1,14 @@
+// Print a welcome message to the console
 console.log("Welome to console");
 
-// make a button disable
+// Function to disable a button based on index and total length
 function diableButton(index, id, length) {
   if (index == 0 || index == length - 1) {
     id.style.opacity = "0.2";
     id.style.pointerEvents = "none";
   }
 }
+// Function to enable a button based on index and total length
 function enableButton(index, id, length) {
   if (index > 0 && index < length - 1) {
     id.style.opacity = "1";
@@ -14,6 +16,7 @@ function enableButton(index, id, length) {
   }
 }
 
+// Function to convert seconds to minutes and seconds format
 function secondsToMinutesAndSeconds(seconds) {
   if (isNaN(seconds) || seconds < 0) {
     return "00:00";
@@ -35,6 +38,7 @@ function secondsToMinutesAndSeconds(seconds) {
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 
+// Async function to fetch songs based on a given folder
 async function getSongs(currFolder) {
   let songs_table = await fetch(`http://127.0.0.1:3000/songs/${currFolder}`);
   let text = await songs_table.text();
@@ -51,6 +55,7 @@ async function getSongs(currFolder) {
   return songs;
 }
 
+// Async function to fetch song images details based on a given folder
 async function getSongImagesDetails(currFolder) {
   let songs_img = await fetch(`http://127.0.0.1:3000/img/songs/${currFolder}`);
   let img_path = await songs_img.text();
@@ -67,6 +72,7 @@ async function getSongImagesDetails(currFolder) {
   return songs_images;
 }
 
+// Async function to get song details from song URLs and a current folder
 async function getSongDetails(songs, currFolder) {
   let arr = [];
   for (let index = 0; index < songs.length; index++) {
@@ -81,6 +87,7 @@ async function getSongDetails(songs, currFolder) {
   return arr;
 }
 
+// Async function to display song details on the webpage
 async function displaySongDetails(songs_images, songs_details) {
   let songsLibaray = document
     .querySelector(".songs-libaray")
@@ -105,6 +112,7 @@ async function displaySongDetails(songs_images, songs_details) {
   }
 }
 
+// Function to play a song and update local storage
 function playSong(song_name, current_song, currFolder, flag = true) {
   localStorage.setItem("last_played_song", song_name);
   localStorage.setItem("last_folder", currFolder);
@@ -117,7 +125,7 @@ function playSong(song_name, current_song, currFolder, flag = true) {
   }
 }
 
-// for getting first song of every playlist
+// Function to get the first song of a playlist
 function getFirstSong() {
   let song_name = document.querySelector(".song-detail").children[0].innerText;
   let artist_name =
@@ -126,7 +134,7 @@ function getFirstSong() {
   return fullsongName;
 }
 
-// Attach an even listner to each song
+// Function to add click event listeners to each song in the library
 function addEventListenerToEachLibrarySongs(songs, current_song, currFolder) {
   Array.from(document.querySelectorAll(".song-list")).forEach((element) => {
     element.addEventListener("click", () => {
@@ -165,16 +173,7 @@ function addEventListenerToEachLibrarySongs(songs, current_song, currFolder) {
   });
 }
 
-// async function getFirstFolderName() {
-//   let folders = await fetch(`http://127.0.0.1:3000/songs/`);
-//     let text = await folders.text();
-//     let div = document.createElement("div");
-//     div.innerHTML = text;
-//      let a = div.getElementsByTagName("a");
-//      let folder_name = a[1].innerHTML.slice(0, a[1].innerHTML.length - 1);
-//       return folder_name;
-// }
-
+// Async function to fetch folders from the server
 async function getFolders() {
   let folders_dir = await fetch(`http://127.0.0.1:3000/songs/`);
   let text = await folders_dir.text();
@@ -192,6 +191,7 @@ async function getFolders() {
   return folders;
 }
 
+// Async function to display albums based on the list of folders
 async function displayAlbums(folders) {
   let playlistCard = document.querySelector(".playlist-cards");
   for (let index = 0; index < folders.length; index++) {
@@ -213,6 +213,7 @@ async function displayAlbums(folders) {
   }
 }
 
+// Main function to initialize the webpage
 async function main() {
   let folders = await getFolders();
   let currFolder = folders[0];
@@ -353,4 +354,5 @@ async function main() {
   });
 }
 
+// Call the main function to start the application
 main();
