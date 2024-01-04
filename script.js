@@ -72,8 +72,9 @@ async function getSongDetails(songs,currFolder) {
     let arr = [];
     for (let index = 0; index < songs.length; index++) {
         const element = songs[index];
+        currFolder = currFolder.replaceAll(" ","%20");
+        console.log("current folder " + currFolder);
         arr[index] = element.split(`/songs/${currFolder}/`)[1].replaceAll("%20"," ").split("-");
-        // console.log(arr);
     }
     return arr;
 }
@@ -82,7 +83,6 @@ async function displaySongDetails(songs_images, songs_details) {
   let songsLibaray = document
     .querySelector(".songs-libaray")
     .querySelector("ul");
-    console.log(songs_images.length,songs_details.length)
   songsLibaray.innerHTML = "";
   for (let index = 0; index < songs_images.length; index++) {
     const song_img = songs_images[index];
@@ -107,11 +107,6 @@ function playSong(song_name,current_song,currFolder,flag=true) {
     localStorage.setItem("last_played_song",song_name);
     localStorage.setItem("last_folder",currFolder);
     current_song.src = `/songs/${currFolder}/` + song_name;
-    // if(current_song.paused){
-    //     console.log("pause")
-    //     current_song.play();
-    // }
-    // console.log(document.querySelector(".cureent-song-details"));
     document.querySelector(".cureent-song-details").innerText = song_name;
     document.querySelector(".timeline").innerText="00:00/00:00";
     if(flag){
@@ -120,18 +115,26 @@ function playSong(song_name,current_song,currFolder,flag=true) {
     }
 }
 
+// for getting first song of every playlist
+function getFirstSong() {
+  let song_name = document.querySelector(".song-detail").children[0].innerText;
+  let artist_name = document.querySelector(".song-detail").children[1].innerText;
+  let fullsongName = song_name + "-" + artist_name + ".mp3";
+  return fullsongName;
+}
+
 
 // Attach an even listner to each song
 function addEventListenerToEachLibrarySongs(songs,current_song,currFolder) {
   Array.from(document.querySelectorAll(".song-list")).forEach((element) => {
-    // console.log(element);
     element.addEventListener("click", () => {
       let song_name =
         element.querySelector(".song-detail").children[0].innerText;
       let artist_name =
         element.querySelector(".song-detail").children[1].innerText;
       let fullsongName = song_name + "-" + artist_name + ".mp3";
-      console.log(currFolder + " " + fullsongName);
+      console.log("songs ke ander ka current folder" + currFolder);
+      currFolder = currFolder.replaceAll(" ","%20")
       let first =
         songs[0].split(`/songs/${currFolder}/`)[1].replaceAll("%20", " ") ==
         fullsongName;
@@ -196,7 +199,6 @@ async function displayAlbums(folders) {
       `http://127.0.0.1:3000/songs/${fold}/info.json`
     );
     let json = await info.json();
-    // console.log(json);
     playlistCard.innerHTML =
       playlistCard.innerHTML +
       `<div class="card p-1 bg-grey m-1 roundend">
@@ -220,7 +222,6 @@ async function main() {
   let folders = await getFolders();
   let currFolder = folders[0];
   let songs = await getSongs(currFolder);
-  //    console.log(songs);
   let songs_images = await getSongImagesDetails(currFolder);
   let songs_details = await getSongDetails(songs,currFolder);
   await displayAlbums(folders);
@@ -252,17 +253,14 @@ async function main() {
   
   // updating time for the current song
   current_song.addEventListener("timeupdate", () => {
-    console.log(current_song.currentTime, current_song.duration);
     document.querySelector(".timeline").innerHTML = `
     ${secondsToMinutesAndSeconds(current_song.currentTime)}/${secondsToMinutesAndSeconds(current_song.duration)}`;
-    console.log(document.querySelector(".circle"));
     document.querySelector(".circle").style.left =
       (current_song.currentTime / current_song.duration) * 100 + "%";
   });
 
   // Add event listner to seekbar
   document.querySelector(".seekbar").addEventListener("click", (e) => {
-    console.log(e.offSetX);
     let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
     document.querySelector(".circle").style.left = percent + "%";
     current_song.currentTime = (current_song.duration * percent) / 100;
@@ -351,6 +349,8 @@ async function main() {
         songs_details = await getSongDetails(songs, currFolder);
         await displaySongDetails(songs_images, songs_details);
         addEventListenerToEachLibrarySongs(songs,current_song,currFolder);
+        let fullsongName = getFirstSong();
+        playSong(fullsongName,current_song,currFolder);
       })
     })
 }
