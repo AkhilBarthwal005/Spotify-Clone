@@ -286,6 +286,7 @@ async function main() {
       console.log('pervious');
        current_song.pause();
        let index = songs.indexOf(current_song.src);
+       currFolder = currFolder.replaceAll(" ","%20");
        if (index - 1 >= 0) {
          let song_name = songs[index - 1].split(`/songs/${currFolder}/`)[1];
          playSong(decodeURI(song_name), current_song,currFolder);
@@ -300,6 +301,7 @@ async function main() {
       console.log('next');
       current_song.pause();
       let index = songs.indexOf(current_song.src);
+      currFolder = currFolder.replaceAll(" ", "%20");
       if(index+1 < songs.length){
         let song_name = songs[index + 1].split(`/songs/${currFolder}/`)[1];
         playSong(decodeURI(song_name), current_song,currFolder);
