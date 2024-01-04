@@ -1,6 +1,12 @@
 // Print a welcome message to the console
 console.log("Welome to console");
 
+//
+ let local_path = "http://127.0.0.1:3000"; // local path
+ let remote_path =
+   "https://github.com/AkhilBarthwal005/Spotify-Clone.github.io"; // remote path
+
+
 // Function to disable a button based on index and total length
 function diableButton(index, id, length) {
   if (index == 0 || index == length - 1) {
@@ -40,7 +46,7 @@ function secondsToMinutesAndSeconds(seconds) {
 
 // Async function to fetch songs based on a given folder
 async function getSongs(currFolder) {
-  let songs_table = await fetch(`http://127.0.0.1:3000/songs/${currFolder}`);
+  let songs_table = await fetch(`$${remote_path}/songs/${currFolder}`);
   let text = await songs_table.text();
   let div = document.createElement("div");
   div.innerHTML = text;
@@ -57,7 +63,7 @@ async function getSongs(currFolder) {
 
 // Async function to fetch song images details based on a given folder
 async function getSongImagesDetails(currFolder) {
-  let songs_img = await fetch(`http://127.0.0.1:3000/img/songs/${currFolder}`);
+  let songs_img = await fetch(`$${remote_path}/img/songs/${currFolder}`);
   let img_path = await songs_img.text();
   let div = document.createElement("div");
   div.innerHTML = img_path;
@@ -175,7 +181,7 @@ function addEventListenerToEachLibrarySongs(songs, current_song, currFolder) {
 
 // Async function to fetch folders from the server
 async function getFolders() {
-  let folders_dir = await fetch(`http://127.0.0.1:3000/songs/`);
+  let folders_dir = await fetch(`$${remote_path}/songs/`);
   let text = await folders_dir.text();
   let div = document.createElement("div");
   div.innerHTML = text;
@@ -196,7 +202,7 @@ async function displayAlbums(folders) {
   let playlistCard = document.querySelector(".playlist-cards");
   for (let index = 0; index < folders.length; index++) {
     let fold = folders[index];
-    let info = await fetch(`http://127.0.0.1:3000/songs/${fold}/info.json`);
+    let info = await fetch(`$${remote_path}/songs/${fold}/info.json`);
     let json = await info.json();
     playlistCard.innerHTML =
       playlistCard.innerHTML +
