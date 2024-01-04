@@ -1,5 +1,5 @@
-:root{
-  --playBottom : 20%;
+:root {
+  --playBottom: 20%;
   --playOpacity: 0;
 }
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght&display=swap");
@@ -20,7 +20,7 @@ body {
   background-color: black;
 }
 .main {
-  width: 75vw ;
+  width: 75vw;
 }
 
 .home {
@@ -28,10 +28,10 @@ body {
   min-height: calc(20vh - 1rem);
 }
 
-.logo img{
+.logo img {
   max-width: 35%;
   width: 50%;
-} 
+}
 
 .home ul {
   margin: 1rem 0;
@@ -99,10 +99,10 @@ body {
   bottom: 3%;
   width: 80%;
 }
-#hamburger{
+#hamburger {
   display: none;
 }
-#hamburger-background{
+#hamburger-background {
   background-color: black;
   width: 100vw;
   height: 100vh;
@@ -113,7 +113,7 @@ body {
 }
 .content {
   margin: 0.8rem 1rem 0.8rem 0.3rem;
-  height: calc(100vh - 1rem)
+  height: calc(100vh - 1rem);
 }
 
 .nav {
@@ -168,7 +168,7 @@ body {
   flex-wrap: wrap;
   gap: 15px;
   max-height: 60vh;
-    margin: 1rem 0;
+  margin: 1rem 0;
   overflow-y: scroll;
 }
 
@@ -181,8 +181,8 @@ body {
 
 .card:hover {
   background-color: #262626;
-  --playBottom : 42%;
-  --playOpacity:1;
+  --playBottom: 42%;
+  --playOpacity: 1;
 }
 
 .card img {
@@ -215,13 +215,13 @@ body {
   position: absolute;
   bottom: 0%;
   border-radius: 30px;
-  min-height: 10vh
+  min-height: 10vh;
 }
 .above-bar {
   display: flex;
   align-items: center;
-    width: 100%;
-    justify-content: space-between;
+  width: 100%;
+  justify-content: space-between;
 }
 .cureent-song-details {
   width: 25%;
@@ -242,11 +242,11 @@ body {
   padding: 0.2rem;
   cursor: pointer;
 }
-.time-vol{
+.time-vol {
   width: 15%;
   text-align: end;
 }
-.volume{
+.volume {
   display: flex;
   gap: 12px;
   max-width: 95%;
@@ -254,14 +254,13 @@ body {
   /* margin-left: auto; */
   cursor: pointer;
 }
-.volume input{
-    max-width: 70%;
+.volume input {
+  max-width: 70%;
 }
 
-#volumeRange{
+#volumeRange {
   cursor: pointer;
 }
-
 
 .seekbar {
   width: 100%;
@@ -271,7 +270,6 @@ body {
   border-radius: 10px;
   margin-top: 0.6rem;
   cursor: pointer;
-  
 }
 
 .circle {
@@ -286,70 +284,101 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
-  .volume{
+  .volume {
     margin-left: auto;
   }
-  .volume input{
+  .volume input {
     width: 100%;
   }
 }
 
-
-
-@media screen and (max-width: 1000px){
-  body{
+@media screen and (max-width: 1000px) {
+  body {
     font-size: 0.8rem;
     /* background-color: red; */
   }
-  .song-detail {
-   
-  }
-  .song-detail h4,p{
+  .song-detail h4,
+  p {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  #hamburger{
+  #hamburger {
     display: block;
   }
-  .nav-arrows{
+  .nav-arrows {
     display: flex;
     gap: 15px;
   }
 }
-@media screen and (max-width: 850px){
- .sidebar {
-  position: absolute;
-  left: -100%;
-  z-index: 5;
-  width: 50vw;
-  /* max-width: 300px; */
-  transition: left 0.5s ease-out;
+@media screen and (max-width: 850px) {
+  .sidebar {
+    position: absolute;
+    left: -100%;
+    z-index: 5;
+    width: 50vw;
+    /* max-width: 300px; */
+    transition: left 0.5s ease-out;
+  }
+  .main {
+    width: 100vw;
+    /* margin-left: 0.3rem; */
+  }
+  .content {
+    margin: 0.8rem 0.3rem 0.8rem 0.3rem;
+  }
+  .volume {
+    max-width: 70%;
+  }
+  .playlist-cards {
+    margin: 1rem auto;
+    max-width: 80%;
+  }
+}
+@media screen and (max-width: 620px) {
+  .playlist-cards {
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .sidebar {
+    max-width: 70vw;
+    width: 70vw;
+  }
+  .controllers img {
+    width: 1.5rem;
+  }
+  .time-vol {
+    width: 20%;
+  }
+}
 
-}
-.main{
-  width: 100vw;
-  /* margin-left: 0.3rem; */
-}
-.content {
-  margin: 0.8rem 0.3rem 0.8rem 0.3rem;
-}
-.volume{
-  max-width: 70%;
-}
-}
-@media screen and (max-width: 500px){
- .sidebar {
-  max-width: 70vw;
-  width: 70vw;
-}
-.controllers img {
-  width: 1.5rem;
-}
-.time-vol{
-  width: 20%;
-}
-.playlist-cards {
-  justify-content: center;
-}
+@media screen and (max-width: 300px) {
+  .nav-arrows {
+    gap: 0px;
+  }
+  .music-player {
+    height: 20%;
+  }
+  .above-bar {
+    height: 80%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cureent-song-details {
+    width: 100%;
+  }
+  .time-vol {
+    width: 100%;
+    text-align: center;
+  }
+  .timeline {
+    margin-bottom: 0.5rem;
+  }
+  .volume {
+    max-width: 100%;
+    justify-content: space-evenly;
+    gap: 0;
+  }
 }
