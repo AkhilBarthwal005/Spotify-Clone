@@ -100,6 +100,9 @@ body {
   width: 80%;
 }
 #hamburger{
+  display: none;
+}
+#hamburger-background{
   background-color: black;
   width: 100vw;
   height: 100vh;
@@ -305,6 +308,13 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  #hamburger{
+    display: block;
+  }
+  .nav-arrows{
+    display: flex;
+    gap: 15px;
   }
 }
 @media screen and (max-width: 850px){
