@@ -4,7 +4,7 @@ console.log("Welome to console");
 //
  let local_path = "http://127.0.0.1:3000"; // local path
  let remote_path =
-   "https://github.com/AkhilBarthwal005/Spotify-Clone.github.io"; // remote path
+   "https://github.com/AkhilBarthwal005/Spotify-Clone.github.io/tree/main"; // remote path
 
 
 // Function to disable a button based on index and total length
